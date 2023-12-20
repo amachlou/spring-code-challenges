@@ -8,6 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -37,8 +38,10 @@ public class CateringJobController {
         }
     }
 
-    public List<CateringJob> getCateringJobsByStatus(Status status) {
-        return null;
+    @GetMapping("/status")
+    public List<CateringJob> getCateringJobsByStatus(@RequestParam Status status) {
+        return Optional.of(cateringJobRepository.findByStatus(status))
+                .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
     }
 
     public CateringJob createCateringJob(CateringJob job) {
