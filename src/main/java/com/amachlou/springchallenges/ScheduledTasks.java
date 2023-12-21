@@ -16,7 +16,7 @@ public class ScheduledTasks {
 
     private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
 
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "0 */10 * * * *")
     public void reportOrderStats() {
         List<CateringJob> jobs = cateringJobRepository.findAll();
         logger.info("We have {} Jobs", jobs.size());
