@@ -14,12 +14,13 @@ import java.util.Optional;
 @RestController
 @RequestMapping("cateringJobs")
 public class CateringJobController {
-    private static final String IMAGE_API = "https://foodish-api.herokuapp.com";
+    private static final String IMAGE_API = "https://passporterapp.com/fr/blog/maroc/que-faire-voyage-rabat/";
     private final CateringJobRepository cateringJobRepository;
     WebClient client;
 
     public CateringJobController(CateringJobRepository cateringJobRepository, WebClient.Builder webClientBuilder) {
         this.cateringJobRepository = cateringJobRepository;
+        client = webClientBuilder.baseUrl(IMAGE_API).build();
     }
 
     @GetMapping
@@ -75,8 +76,9 @@ public class CateringJobController {
         }
     }
 
+    @GetMapping("/surpriseMe")
     public Mono<String> getSurpriseImage() {
-        return null;
+        return client.get().retrieve().bodyToMono(String.class);
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
