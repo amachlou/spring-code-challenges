@@ -14,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("cateringJobs")
 public class CateringJobController {
-    private static final String IMAGE_API = "https://passporterapp.com/fr/blog/maroc/que-faire-voyage-rabat/";
+    private static final String IMAGE_API = "https://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.s2014.png";
     private final CateringJobRepository cateringJobRepository;
     WebClient client;
 
